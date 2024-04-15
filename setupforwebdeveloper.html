@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chatroom</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+    header {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .chat-area {
+        height: 300px;
+        overflow-y: scroll;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .message {
+        margin-bottom: 10px;
+    }
+    .user-input {
+        width: 100%;
+        padding: 5px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .user-list {
+        float: right;
+        width: 30%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Chatroom</h1>
+    </header>
+    <div class="container">
+        <div class="chat-area" id="chatArea">
+            <!-- Chat messages will be displayed here -->
+        </div>
+        <input type="text" class="user-input" id="messageInput" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+        <div class="user-list" id="userList">
+            <!-- User list will be displayed here -->
+        </div>
+    </div>
+    <script>
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value;
+            if (message.trim() !== '') {
+                const chatArea = document.getElementById('chatArea');
+                const messageElement = document.createElement('div');
+                messageElement.textContent = message;
+                messageElement.className = 'message';
+                chatArea.appendChild(messageElement);
+                messageInput.value = '';
+                chatArea.scrollTop = chatArea.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>
